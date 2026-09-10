@@ -1,0 +1,79 @@
+# ---------- Secrets ----------
+# Shobcheye important line. Ekbar push hoye gele ar phera jay na.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+
+# ---------- Virtual environment ----------
+venv/
+env/
+.venv/
+ENV/
+
+# ---------- Python bytecode & cache ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ---------- Packaging / build ----------
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# ---------- Testing & coverage ----------
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+
+# ---------- Type checkers & linters ----------
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.dmypy.json
+
+# ---------- Local database files ----------
+*.db
+*.sqlite
+*.sqlite3
+
+# ---------- Alembic ----------
+# Migration file GULO commit korte HOBE. Shudhu version-er cache noy.
+# Tai ekhane alembic/versions/ rakha jabe na.
+
+# ---------- Logs ----------
+*.log
+logs/
+
+# ---------- Uploaded / generated media ----------
+# Jodi user file upload kore, sheta repo te dhukiye phelben na.
+uploads/
+media/
+static/uploads/
+
+# ---------- Editor / IDE ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ---------- OS junk ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Jupyter ----------
+.ipynb_checkpoints/
+
+# ---------- Docker ----------
+docker-compose.override.yml
