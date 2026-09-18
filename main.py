@@ -90,6 +90,9 @@ def read_me(current_user: User = Depends(get_current_user)):
 
 
 @app.get("/users", response_model=list[UserOut])
-def get_all_users(db: Session = Depends(get_db)):
+def get_all_users(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
     users = db.query(User).all()
     return users
