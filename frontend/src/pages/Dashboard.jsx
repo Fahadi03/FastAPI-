@@ -1,13 +1,11 @@
+import AuthLayout from "../components/AuthLayout";
 import { useAuth } from "../context/AuthContext";
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
 
   return (
-    <div className="card">
-      <h1>Welcome, {user.username}</h1>
-      <p className="muted">You are logged in with a JWT token.</p>
-
+    <AuthLayout title={`Hi, ${user.username}`} subtitle="You're logged in">
       <dl className="details">
         <dt>User ID</dt>
         <dd>{user.id}</dd>
@@ -19,9 +17,9 @@ export default function Dashboard() {
         <dd>{new Date(user.created_at).toLocaleString()}</dd>
       </dl>
 
-      <button type="button" className="secondary" onClick={logout}>
+      <button type="button" className="primary" onClick={logout}>
         Log out
       </button>
-    </div>
+    </AuthLayout>
   );
 }

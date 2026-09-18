@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import api from "../api/client";
+import AuthLayout from "../components/AuthLayout";
+import { PasswordField, TextField } from "../components/FormFields";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -28,13 +30,12 @@ export default function Register() {
   }
 
   return (
-    <div className="card">
-      <h1>Create account</h1>
-
+    <AuthLayout title="Join us" subtitle="Create an account to begin">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input
+        <TextField
           id="username"
+          label="Username"
+          autoComplete="username"
           value={username}
           onChange={(event) => setUsername(event.target.value)}
           minLength={3}
@@ -42,10 +43,10 @@ export default function Register() {
           required
         />
 
-        <label htmlFor="password">Password</label>
-        <input
+        <PasswordField
           id="password"
-          type="password"
+          label="Password (min 6)"
+          autoComplete="new-password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           minLength={6}
@@ -55,14 +56,14 @@ export default function Register() {
 
         {error && <p className="error">{error}</p>}
 
-        <button type="submit" disabled={submitting}>
-          {submitting ? "Creating..." : "Register"}
+        <button type="submit" className="primary" disabled={submitting}>
+          {submitting ? "Creating..." : "Sign Up"}
         </button>
       </form>
 
-      <p className="muted">
-        Already have an account? <Link to="/login">Log in</Link>
+      <p className="switch">
+        Already have an account? <Link to="/login">Login</Link>
       </p>
-    </div>
+    </AuthLayout>
   );
 }

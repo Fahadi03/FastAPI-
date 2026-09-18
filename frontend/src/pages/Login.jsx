@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import AuthLayout from "../components/AuthLayout";
+import { PasswordField, TextField } from "../components/FormFields";
 import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
@@ -29,22 +31,21 @@ export default function Login() {
   }
 
   return (
-    <div className="card">
-      <h1>Log in</h1>
-
+    <AuthLayout title="Welcome" subtitle="Log in to start your journey">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input
+        <TextField
           id="username"
+          label="Username"
+          autoComplete="username"
           value={username}
           onChange={(event) => setUsername(event.target.value)}
           required
         />
 
-        <label htmlFor="password">Password</label>
-        <input
+        <PasswordField
           id="password"
-          type="password"
+          label="Password"
+          autoComplete="current-password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           required
@@ -52,14 +53,14 @@ export default function Login() {
 
         {error && <p className="error">{error}</p>}
 
-        <button type="submit" disabled={submitting}>
-          {submitting ? "Logging in..." : "Log in"}
+        <button type="submit" className="primary" disabled={submitting}>
+          {submitting ? "Logging in..." : "Login"}
         </button>
       </form>
 
-      <p className="muted">
-        No account? <Link to="/register">Register</Link>
+      <p className="switch">
+        Don&apos;t have an account? <Link to="/register">Sign Up</Link>
       </p>
-    </div>
+    </AuthLayout>
   );
 }
