@@ -1,11 +1,11 @@
-import AuthLayout from "../components/AuthLayout";
+import ProfileLayout from "../components/ProfileLayout";
 import { useAuth } from "../context/AuthContext";
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
 
   return (
-    <AuthLayout title={`Hi, ${user.username}`} subtitle="You're logged in">
+    <ProfileLayout title={`Hi, ${user.username}!`} subtitle="So happy to see you here">
       <dl className="details">
         <dt>User ID</dt>
         <dd>{user.id}</dd>
@@ -20,6 +20,6 @@ export default function Dashboard() {
       <button type="button" className="primary" onClick={logout}>
         Log out
       </button>
-    </AuthLayout>
+    </ProfileLayout>
   );
 }

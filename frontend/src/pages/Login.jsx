@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import mascot from "../assets/mascot.webp";
 import AuthLayout from "../components/AuthLayout";
 import { PasswordField, TextField } from "../components/FormFields";
+import SocialButtons from "../components/SocialButtons";
 import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
@@ -31,7 +33,11 @@ export default function Login() {
   }
 
   return (
-    <AuthLayout title="Welcome" subtitle="Log in to start your journey">
+    <AuthLayout
+      title="Welcome"
+      subtitle="Log in to start your journey"
+      art={<img className="mascot-photo" src={mascot} alt="" />}
+    >
       <form onSubmit={handleSubmit}>
         <TextField
           id="username"
@@ -57,6 +63,8 @@ export default function Login() {
           {submitting ? "Logging in..." : "Login"}
         </button>
       </form>
+
+      <SocialButtons />
 
       <p className="switch">
         Don&apos;t have an account? <Link to="/register">Sign Up</Link>

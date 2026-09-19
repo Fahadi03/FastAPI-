@@ -193,9 +193,29 @@ body {
   position: relative;
   z-index: 2;
   display: block;
-  width: 220px;
-  margin: 0 auto -28px;
+  width: 250px;
+  margin: 4px auto -34px;
   filter: drop-shadow(0 8px 10px rgba(94, 70, 150, 0.18));
+}
+
+/*
+ * Winking girl cut from the reference render (456 x 387 px). Her arms rest on
+ * the card's top edge 354px down; her sleeves and fingers drape up to 33px
+ * past it, i.e. 7.24% of her width, so that is how far she overlaps the card.
+ * Kept narrower than the card minus its corner radius so the flat sleeve
+ * bottoms always sit on the straight part of the edge.
+ */
+.mascot-photo {
+  --mw: 300px;
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: var(--mw);
+  height: auto;
+  margin: 8px auto calc(var(--mw) * -0.0724);
+  filter: drop-shadow(0 6px 8px rgba(94, 70, 150, 0.14));
+  pointer-events: none;
+  user-select: none;
 }
 
 .form-card {
@@ -342,6 +362,71 @@ form {
   font-size: 14px;
 }
 
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0 16px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1.5px;
+  border-radius: 1px;
+  background: #dcd2e2;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+
+.social {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--cream);
+  cursor: pointer;
+  box-shadow:
+    0 8px 16px rgba(94, 70, 150, 0.18),
+    inset 0 -4px 8px rgba(94, 70, 150, 0.08),
+    inset 0 4px 8px rgba(255, 255, 255, 0.9);
+  transition: transform 0.15s ease;
+}
+
+.social:hover {
+  transform: translateY(-2px);
+}
+
+.social:focus-visible {
+  outline: 2px solid var(--purple-soft);
+  outline-offset: 3px;
+}
+
+.social svg {
+  width: 28px;
+  height: 28px;
+}
+
+.notice {
+  margin: 14px 0 0;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: #efe8fb;
+  color: var(--purple);
+  font-size: 14px;
+  text-align: center;
+}
+
 .switch {
   margin: 20px 0 0;
   color: var(--muted);
@@ -385,6 +470,259 @@ form {
   word-break: break-word;
 }
 
+/* ---------- Profile room (after login) ---------- */
+
+.room {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 56px 16px 72px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #cfbff0, #c2afea);
+}
+
+.room-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.platform {
+  position: absolute;
+  left: 50%;
+  bottom: 2%;
+  width: min(860px, 120%);
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ddd0f7, #c4b0ee);
+  box-shadow:
+    inset 0 4px 0 rgba(255, 255, 255, 0.55),
+    0 16px 30px rgba(94, 70, 150, 0.18);
+  transform: translateX(-50%);
+}
+
+.cloud-a {
+  top: 6%;
+  left: calc(50% - 400px);
+}
+
+.cloud-b {
+  top: 4%;
+  left: calc(50% + 40px);
+  transform: scale(0.85);
+}
+
+.lamp {
+  position: absolute;
+  top: 0;
+  right: calc(50% - 420px);
+  width: 90px;
+}
+
+.shelf {
+  position: absolute;
+  top: 36%;
+  right: calc(50% - 500px);
+  width: 150px;
+}
+
+.big-plant {
+  position: absolute;
+  bottom: 12%;
+  left: calc(50% - 500px);
+  width: 150px;
+  filter: drop-shadow(0 12px 14px rgba(94, 70, 150, 0.2));
+}
+
+.succulent {
+  position: absolute;
+  bottom: 6%;
+  right: calc(50% - 440px);
+  width: 110px;
+  filter: drop-shadow(0 12px 14px rgba(94, 70, 150, 0.2));
+}
+
+/*
+ * The girl is a cut-out of the reference render (246 x 738 px). In that render
+ * the card's left edge sits 205px into the image, the card top is 43px above
+ * her bun and its bottom 4px below her soles. --s scales everything together
+ * so her hand always lands on the card edge.
+ */
+.stage {
+  --s: 0.8;
+  --card-w: 380px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: calc(205px * var(--s) + var(--card-w));
+  max-width: 100%;
+}
+
+.stage::before {
+  content: "";
+  position: absolute;
+  left: calc(10px * var(--s));
+  bottom: calc(-8px * var(--s));
+  width: calc(220px * var(--s));
+  height: calc(26px * var(--s));
+  border-radius: 50%;
+  background: rgba(90, 60, 150, 0.2);
+  filter: blur(5px);
+}
+
+.girl-img {
+  position: absolute;
+  left: 0;
+  bottom: calc(4px * var(--s));
+  width: calc(246px * var(--s));
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.girl-back {
+  z-index: 1;
+  filter: drop-shadow(0 10px 12px rgba(94, 70, 150, 0.2));
+}
+
+/* Everything of her that crosses the card edge (loose hair, hand, wrist) sits in
+   front of the card; below row 400 her body is fully behind it. The strip starts
+   right on the edge where hair and wrist really cross it, so nothing looks cut. */
+.girl-front {
+  z-index: 3;
+  clip-path: polygon(
+    83.33% 7.05%,
+    100% 7.05%,
+    100% 49.05%,
+    84.55% 49.05%,
+    84.55% 41.19%,
+    83.33% 41.19%,
+    83.33% 32.79%,
+    84.55% 32.79%,
+    84.55% 26.02%,
+    83.33% 26.02%
+  );
+}
+
+.tall-card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  min-height: calc(785px * var(--s));
+  margin-left: calc(205px * var(--s));
+  padding: 34px 28px 28px calc(44px * var(--s) + 18px);
+  border-radius: 42px;
+  background: var(--cream);
+  box-shadow: var(--clay-shadow);
+  text-align: center;
+}
+
+.app-tile {
+  display: grid;
+  place-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 22px;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #c2abf1, #9679da);
+  box-shadow:
+    0 12px 24px rgba(123, 95, 201, 0.35),
+    inset 0 4px 8px rgba(255, 255, 255, 0.35),
+    inset 0 -6px 10px rgba(80, 50, 150, 0.2);
+}
+
+.app-tile svg {
+  width: 64px;
+  height: 64px;
+}
+
+.hello {
+  margin: 0;
+  color: #3f2f73;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.hello-sub {
+  margin: 6px 0 26px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.tall-card .details {
+  text-align: left;
+}
+
+.tall-card .primary {
+  margin-top: auto;
+}
+
+@media (max-width: 1040px) {
+  .shelf,
+  .big-plant {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .lamp,
+  .succulent {
+    display: none;
+  }
+
+  .stage {
+    --s: 0.62;
+    --card-w: 420px;
+  }
+
+  .tall-card {
+    padding: 28px 18px 22px calc(44px * var(--s) + 14px);
+    border-radius: 34px;
+  }
+}
+
+@media (max-width: 440px) {
+  .room {
+    padding: 40px 10px 56px;
+  }
+
+  .stage {
+    --s: 0.5;
+  }
+
+  .app-tile {
+    width: 76px;
+    height: 76px;
+    border-radius: 24px;
+  }
+
+  .app-tile svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .hello {
+    font-size: 26px;
+  }
+
+  .tall-card .details {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .tall-card .details dd {
+    margin-bottom: 8px;
+    text-align: left;
+  }
+}
+
 /* ---------- Misc ---------- */
 
 .centered {
@@ -406,10 +744,20 @@ form {
 }
 
 @media (max-width: 860px) {
-  .plant,
-  .flower,
   .hill {
     display: none;
+  }
+
+  .plant {
+    left: 2%;
+    bottom: 3%;
+    width: 120px;
+  }
+
+  .flower {
+    right: 2%;
+    bottom: 3%;
+    width: 96px;
   }
 
   .cloud-left {
@@ -435,7 +783,25 @@ form {
     width: 180px;
   }
 
+  .mascot-photo {
+    --mw: 236px;
+  }
+
   .form-card {
     padding: 38px 16px 18px;
+  }
+
+  .socials {
+    gap: 20px;
+  }
+
+  .plant {
+    left: -14px;
+    width: 96px;
+  }
+
+  .flower {
+    right: -8px;
+    width: 76px;
   }
 }

@@ -13,7 +13,7 @@ function Sparks({ side }) {
   );
 }
 
-export default function AuthLayout({ title, subtitle, children }) {
+export default function AuthLayout({ title, subtitle, art = <Mascot />, children }) {
   return (
     <div className="scene">
       <Decorations />
@@ -33,7 +33,7 @@ export default function AuthLayout({ title, subtitle, children }) {
         </h1>
         <p className="subtitle">{subtitle}</p>
 
-        <Mascot />
+        {art}
 
         <div className="form-card">{children}</div>
       </main>
