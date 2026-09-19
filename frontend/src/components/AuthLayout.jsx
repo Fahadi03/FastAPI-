@@ -1,5 +1,5 @@
 import Decorations from "./Decorations";
-import Mascot from "./Mascot";
+import mascot from "../assets/mascot.webp";
 
 function Sparks({ side }) {
   return (
@@ -13,7 +13,7 @@ function Sparks({ side }) {
   );
 }
 
-export default function AuthLayout({ title, subtitle, art = <Mascot />, children }) {
+export default function AuthLayout({ title, subtitle, children }) {
   return (
     <div className="scene">
       <Decorations />
@@ -33,7 +33,7 @@ export default function AuthLayout({ title, subtitle, art = <Mascot />, children
         </h1>
         <p className="subtitle">{subtitle}</p>
 
-        {art}
+        <img className="mascot-photo" src={mascot} alt="" />
 
         <div className="form-card">{children}</div>
       </main>

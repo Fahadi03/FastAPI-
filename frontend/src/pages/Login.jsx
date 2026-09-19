@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import mascot from "../assets/mascot.webp";
 import AuthLayout from "../components/AuthLayout";
 import { PasswordField, TextField } from "../components/FormFields";
 import SocialButtons from "../components/SocialButtons";
@@ -33,11 +32,7 @@ export default function Login() {
   }
 
   return (
-    <AuthLayout
-      title="Welcome"
-      subtitle="Log in to start your journey"
-      art={<img className="mascot-photo" src={mascot} alt="" />}
-    >
+    <AuthLayout title="Welcome" subtitle="Log in to start your journey">
       <form onSubmit={handleSubmit}>
         <TextField
           id="username"

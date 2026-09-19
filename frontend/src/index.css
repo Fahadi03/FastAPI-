@@ -189,15 +189,6 @@ body {
   font-size: 16px;
 }
 
-.mascot {
-  position: relative;
-  z-index: 2;
-  display: block;
-  width: 250px;
-  margin: 4px auto -34px;
-  filter: drop-shadow(0 8px 10px rgba(94, 70, 150, 0.18));
-}
-
 /*
  * Winking girl cut from the reference render (456 x 387 px). Her arms rest on
  * the card's top edge 354px down; her sleeves and fingers drape up to 33px
@@ -777,10 +768,6 @@ form {
 
   .title {
     font-size: 34px;
-  }
-
-  .mascot {
-    width: 180px;
   }
 
   .mascot-photo {
