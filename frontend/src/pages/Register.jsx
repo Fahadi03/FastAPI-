@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import api from "../api/client";
+import getErrorMessage from "../lib/errorMessage";
 import AuthLayout from "../components/AuthLayout";
 import { PasswordField, TextField } from "../components/FormFields";
 
@@ -22,8 +23,7 @@ export default function Register() {
       await api.post("/register", { username, password });
       navigate("/login");
     } catch (err) {
-      const detail = err.response?.data?.detail;
-      setError(typeof detail === "string" ? detail : "Registration failed");
+      setError(getErrorMessage(err, "Registration failed"));
     } finally {
       setSubmitting(false);
     }

@@ -716,6 +716,35 @@ form {
 
 /* ---------- Misc ---------- */
 
+.fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.fallback-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 32px 28px;
+  border-radius: 34px;
+  background: var(--cream);
+  box-shadow: var(--clay-shadow);
+  text-align: center;
+}
+
+.fallback-card h1 {
+  margin: 0 0 10px;
+  color: var(--purple);
+  font-size: 26px;
+}
+
+.fallback-card .error,
+.fallback-card .muted {
+  margin: 0 0 22px;
+}
+
 .centered {
   padding-top: 40vh;
   color: var(--purple);

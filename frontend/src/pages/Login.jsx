@@ -5,6 +5,7 @@ import AuthLayout from "../components/AuthLayout";
 import { PasswordField, TextField } from "../components/FormFields";
 import SocialButtons from "../components/SocialButtons";
 import { useAuth } from "../context/AuthContext";
+import getErrorMessage from "../lib/errorMessage";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -24,8 +25,7 @@ export default function Login() {
       await login(username, password);
       navigate("/");
     } catch (err) {
-      const detail = err.response?.data?.detail;
-      setError(typeof detail === "string" ? detail : "Login failed");
+      setError(getErrorMessage(err, "Login failed"));
     } finally {
       setSubmitting(false);
     }
